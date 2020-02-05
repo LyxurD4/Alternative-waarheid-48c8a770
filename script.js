@@ -1,33 +1,53 @@
 const goedeAntwoorden = [
     "Parijs",
     "8",
-    "Ijsselmeer",
+    "IJsselmeer",
     ["Volkswagen", "Audi", "Opel", "Porsche", "BMW", "Mercedes", "Mercedes-Benz"],
-    ["Texel", "Vlieland", "Terschelling", "Ameland", "Schiermonnikoog"],
+    ["Texel", "Vlieland", "Terschelling", "Ameland", "Schiermonnikoog"]
 ];
-var antwoordElementen = [];
-var counter = 0;
 
 function controle() {
-    var hoofdstadElement = document.getElementById("hoofdstadAntwoord");
+    let counter = 0;
+    let antwoordElementen = [];
+
+    let hoofdstadElement = document.getElementById("hoofdstadAntwoord");
     antwoordElementen.push(hoofdstadElement);
-    var hoofdstadAntwoord = hoofdstadElement.value;
+    // let hoofdstadAntwoord = hoofdstadElement.value;
 
-    var potenElement = document.getElementById("potenAntwoord");
+    let potenElement = document.getElementById("potenAntwoord");
     antwoordElementen.push(potenElement);
-    var potenAntwoord = hoofdstadElement.value;
-
-    var meerElement = document.getElementById("meerAntwoord");
-    antwoordElementen.push(meerElement);
-    var potenAntwoord = meerElement.value;
+    // let potenAntwoord = hoofdstadElement.value;
     
-    for (var i = 0; i < goedeAntwoorden.length; i++) {
-        if (goedeAntwoorden[i] === antwoordElementen[i].value) {
-            counter++;
-            antwoordElementen[i].style.backgroundColor = "lightgreen"
+    let meerElement = document.getElementById("meerAntwoord");
+    antwoordElementen.push(meerElement);
+    // let meerAntwoord = meerElement.value;
+
+    let merkElement = document.getElementById("merkAntwoord");
+    antwoordElementen.push(merkElement);
+    // let merkAntwoord = merkElement.value;
+
+    let eilandElement = document.getElementById("eilandAntwoord");
+    antwoordElementen.push(eilandElement);
+    // let eilandAntwoord = eilandElement.value;
+    
+    for (let i = 0; i < goedeAntwoorden.length; i++) {
+        if (i >= 3) {
+            if (goedeAntwoorden[i].includes(antwoordElementen[i].value)) {
+                counter++;
+                console.log("goed in de array");
+                antwoordElementen[i].style.backgroundColor = "lightgreen";
+            } else {
+                console.log("fout in de array");
+                antwoordElementen[i].style.backgroundColor = "red";
+            }
         } else {
-            console.log("fout");
-            antwoordElementen[i].style.backgroundColor = "red";
+            if (goedeAntwoorden[i] === antwoordElementen[i].value) {
+                counter++;
+                antwoordElementen[i].style.backgroundColor = "lightgreen"
+            } else {
+                console.log("fout");
+                antwoordElementen[i].style.backgroundColor = "red";
+            }
         }
     }
 
